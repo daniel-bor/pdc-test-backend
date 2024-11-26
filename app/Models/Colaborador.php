@@ -9,6 +9,8 @@ class Colaborador extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'colaboradores';
+
     protected $fillable = [
         'nombre',
         'fecha_nacimiento',

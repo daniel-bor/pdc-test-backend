@@ -88,15 +88,16 @@ class ColaboradorController extends Controller
         }
 
         $request->validate([
-            'nombre_completo' => 'string|max:255',
-            'edad' => 'integer|min:18',
-            'telefono' => 'string|max:15',
-            'correo' => 'email|unique:colaboradores,correo,' . $id,
-            'empresa_ids' => 'array',
+            'nombre' => 'required|string|max:255',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'required|string|max:15',
+            'direccion' => 'nullable|string|max:255',
+            'correo' => 'required|email',
+            'empresa_ids' => 'array', // IDs de las empresas asociadas (opcional)
             'empresa_ids.*' => 'exists:empresas,id',
         ]);
 
-        $colaborador->update($request->only('nombre_completo', 'edad', 'telefono', 'correo'));
+        $colaborador->update($request->only('nombre', 'fecha_nacimiento', 'telefono', 'correo'));
 
         if ($request->has('empresa_ids')) {
             $colaborador->empresas()->sync($request->empresa_ids);

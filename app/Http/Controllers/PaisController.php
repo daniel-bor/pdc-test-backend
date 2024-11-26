@@ -25,7 +25,7 @@ class PaisController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:pais,nombre',
+            'nombre' => 'required|string|max:255',
         ]);
 
         $pais = Pais::create([
@@ -65,7 +65,7 @@ class PaisController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:pais,nombre,' . $id,
+            'nombre' => 'required|string|max:255',
         ]);
 
         $pais = Pais::find($id);

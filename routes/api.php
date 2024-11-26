@@ -73,7 +73,6 @@ Route::group([
     Route::delete('/{id}', [EmpresaController::class, 'destroy']);
 });
 
-
 // Grupo de Route para CRUD de Colaboradores
 Route::group([
     'middleware' => 'auth:api',

@@ -25,7 +25,7 @@ class MunicipioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:municipios,nombre',
+            'nombre' => 'required|string|max:255',
             'departamento_id' => 'required|exists:departamentos,id',
         ]);
 
@@ -67,7 +67,7 @@ class MunicipioController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:municipios,nombre,' . $id,
+            'nombre' => 'required|string|max:255',
             'departamento_id' => 'required|exists:departamentos,id',
         ]);
 

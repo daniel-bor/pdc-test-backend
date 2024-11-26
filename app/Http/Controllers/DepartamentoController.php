@@ -25,7 +25,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:departamentos,nombre',
+            'nombre' => 'required|string|max:255',
             'pais_id' => 'required|exists:pais,id'
         ]);
 
@@ -67,7 +67,7 @@ class DepartamentoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255|unique:departamentos,nombre,' . $id,
+            'nombre' => 'required|string|max:255',
             'pais_id' => 'required|exists:pais,id'
         ]);
 
